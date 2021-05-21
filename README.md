@@ -1,2 +1,4 @@
 # Codeforces-1471A-Strange-Partition
-Link: https://codeforces.com/contest/1471/problem/A
+Link: https://codeforces.com/problemset/problem/1471/A
+## Derivation of Formula
+![](vis.png)
