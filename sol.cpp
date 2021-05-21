@@ -1,31 +1,34 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
-#define ll long long
-#define ar array
-
-void solve() {
-	int n, x;
-	cin >> n >> x;
-	ll sum1=0, sum2=0;
-	//get the sum as a whole and divide it by 'x'
-	//get the sum of each quotient which is 'a/x'
-	//round up on both sums
-	for(int i=0; i<n; ++i) {
-		int a;
-		cin >> a;
-		sum1+=a;
-		sum2+=ceil((double)a/x);
-	}
-	cout << ceil((double)sum1/x) << " " << sum2 << "\n";
-}
-
 int main() {
-	ios::sync_with_stdio(0);
+	ios::sync_with_stdio(false);
 	cin.tie(0);
-	
-	int t;
-	cin >> t;
-	while(t--)
-		solve();
+	int tt;
+	cin >> tt;
+	while (tt--) {
+		int n, x;
+		cin >> n >> x;
+		vector<int> arr(n);
+		for (int i = 0; i < n; i++) {
+			cin >> arr[i];
+		}
+		long long maximal = 0;
+		long long minimal = 0;
+		for (int i = 0; i < n; i++) {
+			long long a = arr[i];
+			long long b = x;
+			// get the summation of the quotients of the current element and 'x'
+			maximal += ((a + b - 1) / b);
+			// add all the elements in 'minimal'
+			minimal += arr[i];
+		}
+		// basically, to achieve the maximal beauty, you don't need to apply
+		// any operations at all, simply get the summation of the quotients of 
+		// 'arr[i]' and 'x', meanwhile, to get the minimal beauty you need to 
+		// take the sum of all the elements first before dividing it by 'x'
+		cout << (minimal + x - 1) / x << " " << maximal << '\n';
+	}
+	return 0;
 }
